@@ -61,7 +61,7 @@ export interface RangeQueryInput {
     query: string;
     start: string;
     end: string;
-    step: number;
+    step: string;
     timeout?: number;
 }
 
