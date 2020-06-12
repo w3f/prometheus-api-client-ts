@@ -3,7 +3,9 @@ import { Logger } from '@w3f/logger';
 
 export type Status = 'success' | 'error';
 
-export type ResultType = 'matrix' | 'vector' | 'scalar' | 'string';
+export type RangeResultType = 'matrix';
+
+export type InstantResultType = RangeResultType | 'vector' | 'scalar' | 'string';
 
 export type MetricField = '__name__' | 'job' | 'instance';
 
@@ -13,30 +15,46 @@ export type Metric = {
 
 export type Value = [number, string];
 
-export interface ResultItem {
+export interface InstantResultItem {
     metric: Metric;
-    value?: Value;
-    values?: Array<Value>;
+    value: Value;
 }
 
-export interface Data {
-    resultType: ResultType;
-    result: Array<ResultItem>;
+export interface RangeResultItem {
+    metric: Metric;
+    values: Array<Value>;
 }
 
-export interface Response {
+export interface InstantData {
+    resultType: InstantResultType;
+    result: Array<InstantResultItem>;
+}
+
+export interface RangeData {
+    resultType: RangeResultType;
+    result: Array<RangeResultItem>;
+}
+
+export interface CommonResponse {
     status: Status;
-    data: Data;
 
     errorType?: string;
     error?: string;
     warnings?: Array<string>;
 }
 
-export interface PrometheusAPIClientInterface {
-    instantQuery(): Promise<Response>
+export interface RangeResponse extends CommonResponse {
+    data: RangeData;
 }
 
+export interface InstantResponse extends CommonResponse {
+    data: InstantData;
+}
+
+export interface PrometheusAPIClientInterface {
+    instantQuery(query: string, time?: string, timeout?: number): Promise<InstantResponse>;
+    rangeQuery(query: string, start: string, end: string, step: number, timeout?: number): Promise<RangeResponse>;
+}
 
 export interface RequestHeaders {
     [key: string]: string;
