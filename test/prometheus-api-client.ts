@@ -1,15 +1,24 @@
 import { should } from 'chai';
 import { createLogger } from '@w3f/logger';
 
-import { PrometheusClient } from '../src/index';
+import { PrometheusAPIClient } from '../src/index';
 
 should();
 
-const logger = createLogger();
+const logger = createLogger('debug');
 const url = 'http://prometheus:9090';
 
-const subject = new PrometheusClient(url, logger);
+const cfg = { url, logger };
+const subject = new PrometheusAPIClient(cfg);
 
 describe('Prometheus API Client', () => {
-    it('should retrieve metrics');
+    it('should retrieve instant metrics', async () => {
+        const query = 'up'
+        const input = { query };
+
+        const result = await subject.instantQuery(input);
+
+        result.status.should.eq('success');
+        result.data.resultType.should.eq('vector');
+    });
 });
