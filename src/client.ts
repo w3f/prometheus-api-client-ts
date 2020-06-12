@@ -34,13 +34,27 @@ export class PrometheusAPIClient implements PrometheusAPIClientInterface {
         if (input.timeout) {
             url += `&timeout=${input.timeout}`;
         }
-        this.logger.debug(`Sending instant query '${input.query}' to ${url}`);
 
-        const body = await got(url, { headers: this.headers }).json();
-
-        return body as InstantResponse;
+        return this.query<InstantResponse>(url);
     }
     async rangeQuery(input: RangeQueryInput): Promise<RangeResponse> {
-        return
+        let url = `${this.url}/query_range?query=${input.query}&start=${input.start}&end=${input.end}&step=${input.step}`;
+        if (input.timeout) {
+            url += `&timeout=${input.timeout}`;
+        }
+
+        return this.query<RangeResponse>(url);
+    }
+
+    private async query<T>(url: string): Promise<T> {
+        this.logger.debug(`Sending query to ${url}`);
+
+        try {
+            const body = await got(url, { headers: this.headers }).json();
+            return body as T;
+        } catch (e) {
+            this.logger.error(`body: ${JSON.stringify(e.response.body)}`);
+            throw new Error(e);
+        }
     }
 }
