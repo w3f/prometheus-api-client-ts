@@ -24,8 +24,8 @@ describe('Prometheus API Client', () => {
     });
 
     it('should retrieve range metrics', async () => {
-        const start = moment().startOf('hour').format();
-        const end = moment().format();
+        const start = moment().utc().startOf('hour').format();
+        const end = moment().utc().format();
         const step = '15s';
 
         const input = { query, start, end, step };
