@@ -51,9 +51,23 @@ export interface InstantResponse extends CommonResponse {
     data: InstantData;
 }
 
+export interface InstantQueryInput {
+    query: string;
+    time?: string;
+    timeout?: number;
+}
+
+export interface RangeQueryInput {
+    query: string;
+    start: string;
+    end: string;
+    step: number;
+    timeout?: number;
+}
+
 export interface PrometheusAPIClientInterface {
-    instantQuery(query: string, time?: string, timeout?: number): Promise<InstantResponse>;
-    rangeQuery(query: string, start: string, end: string, step: number, timeout?: number): Promise<RangeResponse>;
+    instantQuery(input: InstantQueryInput): Promise<InstantResponse>;
+    rangeQuery(input: RangeQueryInput): Promise<RangeResponse>;
 }
 
 export interface RequestHeaders {
