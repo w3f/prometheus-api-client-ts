@@ -37,6 +37,7 @@ export class PrometheusAPIClient implements PrometheusAPIClientInterface {
 
         return this.query<InstantResponse>(url);
     }
+
     async rangeQuery(input: RangeQueryInput): Promise<RangeResponse> {
         let url = `${this.url}/query_range?query=${input.query}&start=${input.start}&end=${input.end}&step=${input.step}`;
         if (input.timeout) {

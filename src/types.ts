@@ -1,13 +1,25 @@
 import { Logger } from '@w3f/logger';
 
-
-export type Status = 'success' | 'error';
+export enum Status {
+    Success = 'success',
+    Error = 'error',
+    InProgress = 'in_progress'
+}
 
 export type RangeResultType = 'matrix';
 
-export type InstantResultType = RangeResultType | 'vector' | 'scalar' | 'string';
+export enum InstantResultType {
+    RangeResultType,
+    Vector = 'vector',
+    Scalar = 'scalar',
+    String = 'string'
+}
 
-export type MetricField = '__name__' | 'job' | 'instance';
+export enum MetricField {
+    Name = '__name__',
+    Job = 'job',
+    Instance = 'instance'
+}
 
 export type Metric = {
     [field in MetricField]: string;
