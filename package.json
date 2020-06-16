@@ -1,6 +1,6 @@
 {
   "name": "@w3f/prometheus-api-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Prometheus API Client",
   "repository": "git@github.com:w3f/prometheus-api-client-ts.git",
   "author": "W3F Infrastructure Team <devops@web3.foundation>",
