@@ -2,8 +2,7 @@ import { Logger } from '@w3f/logger';
 
 export enum Status {
     Success = 'success',
-    Error = 'error',
-    InProgress = 'in_progress'
+    Error = 'error'
 }
 
 export type RangeResultType = 'matrix';
