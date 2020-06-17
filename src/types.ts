@@ -14,14 +14,8 @@ export enum InstantResultType {
     String = 'string'
 }
 
-export enum MetricField {
-    Name = '__name__',
-    Job = 'job',
-    Instance = 'instance'
-}
-
 export type Metric = {
-    [field in MetricField]: string;
+    [labelName: string]: string;
 }
 
 export type Value = [number, string];
