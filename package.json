@@ -24,19 +24,19 @@
     "got": "^11.3.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.9",
-    "@types/chai-as-promised": "^7.1.2",
-    "@types/mocha": "^7.0.1",
-    "@types/node": "^13.11.1",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "eslint": "^6.6.0",
-    "js-yaml": "^3.14.0",
-    "mocha": "^7.0.0",
+    "@types/chai": "4.2.11",
+    "@types/chai-as-promised": "7.1.2",
+    "@types/mocha": "7.0.2",
+    "@types/node": "13.13.12",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "eslint": "6.8.0",
+    "js-yaml": "3.14.0",
+    "mocha": "7.2.0",
     "moment": "^2.26.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.8.2"
+    "ts-node": "8.10.2",
+    "typescript": "3.9.5"
   }
 }
