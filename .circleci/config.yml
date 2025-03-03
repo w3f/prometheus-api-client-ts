@@ -3,7 +3,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: web3f/node:v0.1.3
+      - image: web3f/node:0.1.4
       - image: prom/prometheus:v2.36.2
         name: prometheus
     steps:
@@ -16,7 +16,7 @@ jobs:
 
   publishPackage:
     docker:
-      - image: web3f/node:v0.1.3
+      - image: web3f/node:0.1.4
     steps:
       - checkout
 
